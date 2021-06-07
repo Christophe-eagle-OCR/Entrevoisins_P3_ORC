@@ -8,7 +8,7 @@ import com.openclassrooms.entrevoisins.model.Neighbour;
 
 public class ProfilNeighbourActivity extends AppCompatActivity {
 
-
+    Neighbour mNeighbour;
 
 
     @Override
@@ -16,7 +16,7 @@ public class ProfilNeighbourActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil_neighbour);
 
-
+        mNeighbour = (Neighbour) getIntent().getSerializableExtra("neighbour");
 
     }
 }
