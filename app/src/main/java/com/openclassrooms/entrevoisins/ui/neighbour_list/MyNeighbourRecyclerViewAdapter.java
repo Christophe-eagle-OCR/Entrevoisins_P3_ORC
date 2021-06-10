@@ -53,6 +53,11 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             }
         });
 
+        /**
+         * Pour acceder par un clic au layout contenant le profil du neighbour
+         * par un intent vers  ProfilNeighbourActivity
+         */
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

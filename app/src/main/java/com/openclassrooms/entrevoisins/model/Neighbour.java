@@ -5,7 +5,12 @@ import java.util.Objects;
 
 /**
  * Model object representing a Neighbour
+ * /
+
+ * add implement Serializable pour gerer l'ensemble des données du neighbour
+ * via un intent entre mes activity
  */
+
 public class Neighbour implements Serializable {
 
     /** Identifier */
