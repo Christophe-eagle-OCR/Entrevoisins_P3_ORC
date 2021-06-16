@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.openclassrooms.entrevoisins.R;
+import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 
 public class ProfilNeighbourActivity extends AppCompatActivity {
@@ -85,7 +86,7 @@ public class ProfilNeighbourActivity extends AppCompatActivity {
                 if (mNeighbour.isFavoris() == false) {
                     mFavorisButton.setImageResource(R.drawable.ic_star_yellow_24dp);
 
-
+                    DI.getNeighbourApiService().addFavorisNeighbour(mNeighbour);
                     mNeighbour.setFavoris(true);
                     Context context = getApplicationContext();
                     Toast.makeText(context, "Ajouté aux favoris", Toast.LENGTH_SHORT).show();
@@ -93,7 +94,7 @@ public class ProfilNeighbourActivity extends AppCompatActivity {
                 } else if (mNeighbour.isFavoris() == true) {
                     mFavorisButton.setImageResource(R.drawable.ic_star_border_black_24dp);
 
-
+                    DI.getNeighbourApiService().deleteFavorisNeighbour(mNeighbour);
                     mNeighbour.setFavoris(false);
                     Context context = getApplicationContext();
                     Toast.makeText(context, "Supprimé des favoris", Toast.LENGTH_SHORT).show();
