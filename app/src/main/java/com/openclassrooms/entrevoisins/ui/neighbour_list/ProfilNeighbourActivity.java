@@ -74,8 +74,9 @@ public class ProfilNeighbourActivity extends AppCompatActivity {
 
         // change button style if favoris
         if (mNeighbour.isFavoris() == false) {
-            mFavorisButton.setImageResource(R.drawable.ic_star_white_24dp);
+            mFavorisButton.setImageResource(R.drawable.ic_star_border_black_24dp);
         } else mFavorisButton.setImageResource(R.drawable.ic_star_yellow_24dp);
+
 
         // action du bouton favoris
         mFavorisButton.setOnClickListener(new View.OnClickListener() {
@@ -83,10 +84,19 @@ public class ProfilNeighbourActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (mNeighbour.isFavoris() == false) {
                     mFavorisButton.setImageResource(R.drawable.ic_star_yellow_24dp);
+
+
+                    mNeighbour.setFavoris(true);
                     Context context = getApplicationContext();
                     Toast.makeText(context, "Ajouté aux favoris", Toast.LENGTH_SHORT).show();
+
                 } else if (mNeighbour.isFavoris() == true) {
-                    mFavorisButton.setImageResource(R.drawable.ic_star_white_24dp);
+                    mFavorisButton.setImageResource(R.drawable.ic_star_border_black_24dp);
+
+
+                    mNeighbour.setFavoris(false);
+                    Context context = getApplicationContext();
+                    Toast.makeText(context, "Supprimé des favoris", Toast.LENGTH_SHORT).show();
                 }
             }
         });
