@@ -26,6 +26,8 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
 
     private final List<Neighbour> mNeighbours;
 
+    public static final String SELECTED_NEIGHBOUR = "SELECTED_NEIGHBOUR";
+
     public MyNeighbourRecyclerViewAdapter(List<Neighbour> items) {
         mNeighbours = items;
     }
@@ -54,18 +56,17 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
         });
 
         /**
-         * Pour acceder par un clic au layout contenant le profil du neighbour
+         * Pour acceder par un clic au layout contenant le profil du neighbour selectionné
          * par un intent vers  ProfilNeighbourActivity
          */
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(),ProfilNeighbourActivity.class);
+                Intent intent = new Intent(v.getContext(), ProfilNeighbourActivity.class);
 
-                intent.putExtra("neighbour",neighbour);
+                intent.putExtra(SELECTED_NEIGHBOUR, neighbour);
                 v.getContext().startActivity(intent);
-
 
 
             }

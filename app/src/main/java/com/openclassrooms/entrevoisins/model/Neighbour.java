@@ -3,37 +3,50 @@ package com.openclassrooms.entrevoisins.model;
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- * Model object representing a Neighbour
- * /
-
- * add implement Serializable pour gerer l'ensemble des données du neighbour
+/* add implements Serializable pour gerer l'ensemble des données du neighbour
  * via un intent entre mes activity
  */
 
+/**
+ * Model object representing a Neighbour
+ */
 public class Neighbour implements Serializable {
 
-    /** Identifier */
+    /**
+     * Identifier
+     */
     private long id;
 
-    /** Full name */
+    /**
+     * Full name
+     */
     private String name;
 
-    /** Avatar */
+    /**
+     * Avatar
+     */
     private String avatarUrl;
 
-    /** Adress */
+    /**
+     * Adress
+     */
     private String address;
 
-    /** Phone number */
+    /**
+     * Phone number
+     */
     private String phoneNumber;
 
-    /** About me */
+    /**
+     * About me
+     */
     private String aboutMe;
 
-    /** Favoris **/
-    private  boolean favoris;
-
+    /**
+     * Favorite
+     **/
+    private boolean favorite;
+    // ajouté favorite
 
 
     /**
@@ -50,7 +63,7 @@ public class Neighbour implements Serializable {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.aboutMe = aboutMe;
-        this.favoris = false;
+        this.favorite = false;
     }
 
     public long getId() {
@@ -101,12 +114,12 @@ public class Neighbour implements Serializable {
         this.aboutMe = aboutMe;
     }
 
-    public boolean isFavoris() {
-        return favoris;
+    public boolean isFavorite() {
+        return favorite;
     }
 
-    public void setFavoris(boolean favoris) {
-        this.favoris = favoris;
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 
     @Override
