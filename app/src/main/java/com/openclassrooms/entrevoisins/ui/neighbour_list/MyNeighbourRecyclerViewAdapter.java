@@ -22,14 +22,20 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static android.view.View.INVISIBLE;
+
 public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeighbourRecyclerViewAdapter.ViewHolder> {
 
     private final List<Neighbour> mNeighbours;
 
     public static final String SELECTED_NEIGHBOUR = "SELECTED_NEIGHBOUR";
 
-    public MyNeighbourRecyclerViewAdapter(List<Neighbour> items) {
+    private final Boolean mFavorites; // ajout @ boolean favorites pour gerer l'affichage de la corbeille dans l'item du neighbour
+
+
+    public MyNeighbourRecyclerViewAdapter(List<Neighbour> items, Boolean favorites) {
         mNeighbours = items;
+        mFavorites = favorites;
     }
 
     @Override
@@ -48,18 +54,27 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
                 .apply(RequestOptions.circleCropTransform())
                 .into(holder.mNeighbourAvatar);
 
-        holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EventBus.getDefault().post(new DeleteNeighbourEvent(neighbour));
-            }
-        });
+        /**
+         * Ajout condition if else :
+         * si le neighbour est dans the List of favorite neighbours , alors le bouton mDeleteBouton est invisible
+         * sinon le bouton mDeleteBouton est clickable
+         */
+        if (mFavorites){
+            holder.mDeleteButton.setVisibility(INVISIBLE);
+        }
+        else {
+            holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    EventBus.getDefault().post(new DeleteNeighbourEvent(neighbour));
+                }
+            });
+        }
 
         /**
          * Pour acceder par un clic au layout contenant le profil du neighbour selectionné
          * par un intent vers  ProfilNeighbourActivity
          */
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

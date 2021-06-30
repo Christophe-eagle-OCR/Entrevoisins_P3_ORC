@@ -16,6 +16,7 @@
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        tools:src="@tools:sample/avatars"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -24,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:textStyle="bold"
+        tools:text="@tools:sample/first_names"
         app:layout_constraintBottom_toBottomOf="@+id/item_list_avatar"
         app:layout_constraintStart_toEndOf="@+id/item_list_avatar"
         app:layout_constraintTop_toTopOf="@+id/item_list_avatar" />
