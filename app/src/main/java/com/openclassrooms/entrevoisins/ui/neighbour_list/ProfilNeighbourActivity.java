@@ -82,6 +82,7 @@ public class ProfilNeighbourActivity extends AppCompatActivity {
         if (!mNeighbour.isFavorite()) {
             mFavoriteButton.setImageResource(R.drawable.ic_star_border_black_24dp);
         } else mFavoriteButton.setImageResource(R.drawable.ic_star_yellow_24dp);
+            mFavoriteButton.setTag("isFavorite");
 
 
         // action du bouton favorite

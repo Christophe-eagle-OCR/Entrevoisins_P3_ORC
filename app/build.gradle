@@ -9,6 +9,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        testInstrumentationRunnerArguments clearPackageData: 'true'
+
     }
     buildTypes {
         release {
@@ -21,6 +24,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    testOptions {
+        animationsDisabled = true
+        execution 'ANDROID_TEST_ORCHESTRATOR'
+    }
+
 }
 
 dependencies {
@@ -48,4 +57,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
+
+    androidTestUtil 'com.android.support.test:orchestrator:1.0.2'
+
 }
