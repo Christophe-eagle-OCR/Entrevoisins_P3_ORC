@@ -24,6 +24,7 @@ import java.util.List;
 
 public class FavorisNeighbourFragment extends Fragment {
 
+    public static final String FAVORITE_NEIGHBOURS_PAGE = "FAVORITE_NEIGHBOURS_PAGE";
     private NeighbourApiService mApiService;
     private List<Neighbour> mNeighbours;
     private RecyclerView mRecyclerView;
@@ -66,6 +67,7 @@ public class FavorisNeighbourFragment extends Fragment {
      */
     private void initList() {
         mNeighbours = mApiService.getFavoriteNeighbours();
+        getView().setContentDescription(FAVORITE_NEIGHBOURS_PAGE);
         mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours, true));
     }
 

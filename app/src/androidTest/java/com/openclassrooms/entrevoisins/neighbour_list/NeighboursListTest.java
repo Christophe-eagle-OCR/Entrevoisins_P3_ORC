@@ -7,7 +7,9 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.openclassrooms.entrevoisins.R;
+import com.openclassrooms.entrevoisins.ui.neighbour_list.FavorisNeighbourFragment;
 import com.openclassrooms.entrevoisins.ui.neighbour_list.ListNeighbourActivity;
+import com.openclassrooms.entrevoisins.ui.neighbour_list.NeighbourFragment;
 import com.openclassrooms.entrevoisins.utils.DeleteViewAction;
 
 import org.hamcrest.Matchers;
@@ -97,7 +99,8 @@ public class NeighboursListTest {
     public void myNeighboursList_onSelectItem_shouldDisplayProfilScreen() {
         // Given : on start app
         // When perform a click on neighbour (item)
-        onView(Matchers.allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).perform(RecyclerViewActions.actionOnItemAtPosition(3, click()));
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours), withContentDescription(NeighbourFragment.ALL_NEIGHBOURS_PAGE))).perform(RecyclerViewActions.actionOnItemAtPosition(3,click()));
+        //onView(Matchers.allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).perform(RecyclerViewActions.actionOnItemAtPosition(3, click()));
 
         // Then : profil neighbour is displayed
         onView(ViewMatchers.withId(R.id.activity_profil_neighbour)).check(matches(isDisplayed()));
@@ -129,7 +132,8 @@ public class NeighboursListTest {
     public void myNeighboursList_onSelectItemAndAddFavorite_shouldViewFavoriteIsNotBeEmpty() {
 
         // de la page d'accueil , click sur un voisin
-        onView(Matchers.allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).perform(RecyclerViewActions.actionOnItemAtPosition(3, click()));
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours), withContentDescription(NeighbourFragment.ALL_NEIGHBOURS_PAGE))).perform(RecyclerViewActions.actionOnItemAtPosition(3,click()));
+        //onView(Matchers.allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).perform(RecyclerViewActions.actionOnItemAtPosition(3, click()));
 
         // click sur le bouton favoris dans la vue du profil
         onView(ViewMatchers.withId(R.id.activity_profil_neighbour_favoris_button)).perform(click());
@@ -143,13 +147,15 @@ public class NeighboursListTest {
         onView(withId(R.id.container)).perform(swipeLeft());
 
         //vérifier l'affichage des favoris
-        onView(Matchers.allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).check(matches(isDisplayed()));
+        //onView(Matchers.allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).check(matches(isDisplayed()));
         //onView(Matchers.allOf(ViewMatchers.withId(R.id.item_list_name), isDisplayed())).check(matches(withText("Vincent")));
         //onView(allOf(withText("Vincent"),isDisplayed())).check(matches(isDisplayed()));
-        onView(Matchers.allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).check(withItemCount(1));
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours), withContentDescription(FavorisNeighbourFragment.FAVORITE_NEIGHBOURS_PAGE))).check(withItemCount(1));
+        //onView(Matchers.allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).check(withItemCount(1));
 
         // click sur le voisin affiché dans l'onglet favorites puis on verifie qu'il a bien le meme nom que celui mis en favoris précédemment
-        onView(Matchers.allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+        onView(allOf(ViewMatchers.withId(R.id.list_neighbours), withContentDescription(FavorisNeighbourFragment.FAVORITE_NEIGHBOURS_PAGE))).perform(RecyclerViewActions.actionOnItemAtPosition(0,click()));
+        //onView(Matchers.allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         onView(withId(R.id.activity_profil_neighbour_toolbar_name_txt)).check(matches(withText("Vincent")));
 
 
